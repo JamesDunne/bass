@@ -13,7 +13,7 @@ linux-x86_64-binaries_task:
         - mkdir bass-nightly/architectures
         - mkdir bass-nightly/doc
         - cp -a bass/out/bass bass-nightly/bass
-        - cp -a bass/doc bass-nightly/doc
+        - cp -a bass/doc/* bass-nightly/doc
         - cp -a bass/data/architectures/* bass-nightly/architectures
 
     bass-nightly_artifacts:
@@ -30,8 +30,8 @@ windows-x86_64-binaries_task:
         - mkdir bass-nightly
         - mkdir bass-nightly/architectures
         - mkdir bass-nightly/doc
-        - cp -a bass/out/bass bass-nightly/bass
-        - cp -a bass/doc bass-nightly/doc
+        - cp -a bass/out/bass bass-nightly/bass.exe
+        - cp -a bass/doc/* bass-nightly/doc
         - cp -a bass/data/architectures/* bass-nightly/architectures
 
     bass-nightly_artifacts:
@@ -48,8 +48,8 @@ windows-x86_32-binaries_task:
         - mkdir bass-nightly
         - mkdir bass-nightly/architectures
         - mkdir bass-nightly/doc
-        - cp -a bass/out/bass bass-nightly/bass
-        - cp -a bass/doc bass-nightly/doc
+        - cp -a bass/out/bass bass-nightly/bass.exe
+        - cp -a bass/doc/* bass-nightly/doc
         - cp -a bass/data/architectures/* bass-nightly/architectures
 
     bass-nightly_artifacts:
@@ -67,7 +67,7 @@ macOS-x86_64-binaries_task:
         - mkdir bass-nightly/architectures
         - mkdir bass-nightly/doc
         - cp -a bass/out/bass bass-nightly/bass
-        - cp -a bass/doc bass-nightly/doc
+        - cp -a bass/doc/* bass-nightly/doc
         - cp -a bass/data/architectures/* bass-nightly/architectures
 
     bass-nightly_artifacts:
