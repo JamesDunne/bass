@@ -1,9 +1,10 @@
 linux-x86_64-binaries_task:
     container:
-        image: ubuntu:latest
+        #image: ubuntu:latest
+        image: purplekarrot/gcc-8:latest
 
-    setup_script:
-        - apt-get update && apt-get -y install build-essential
+    #setup_script:
+    #    - apt-get update && apt-get -y install build-essential
 
     compile_script:
         - make -C bass
