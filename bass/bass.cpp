@@ -82,7 +82,9 @@ auto nall::main(string_vector args) -> void {
     exit(EXIT_FAILURE);
   }
 
+#ifdef __linux__
   clock_t clockStart = clock();
+#endif
   Bass bass;
   bass.target(targetFilename, create);
   for(auto& sourceFilename : sourceFilenames) {
@@ -100,8 +102,10 @@ auto nall::main(string_vector args) -> void {
     print(stderr, "bass: assembly failed\n");
     exit(EXIT_FAILURE);
   }
+#ifdef __linux__
   clock_t clockFinish = clock();
   if(benchmark) {
     print(stderr, "bass: assembled in ", (double)(clockFinish - clockStart) / CLOCKS_PER_SEC, " seconds\n");
   }
+#endif
 }
