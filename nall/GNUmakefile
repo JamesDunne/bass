@@ -51,7 +51,9 @@ ifeq ($(compiler),)
   else ifeq ($(platform),macos)
     compiler := clang++
   else ifeq ($(platform),linux)
-    compiler := g++-4.9
+    # [jsd] simplified to just 'g++' for cirrus-ci build
+    #compiler := g++-4.9
+    compiler := g++
   else ifeq ($(platform),bsd)
     compiler := g++49
   else
