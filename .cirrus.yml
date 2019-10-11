@@ -1,0 +1,66 @@
+linux-x86_64-binaries_task:
+    container:
+        image: ubuntu:latest
+
+    setup_script:
+        - apt-get update && apt-get -y install build-essential libgtk2.0-dev libpulse-dev mesa-common-dev libgtksourceview2.0-dev libcairo2-dev libsdl2-dev libxv-dev libao-dev libopenal-dev libudev-dev
+
+    compile_script:
+        - make -C bass local=false build=performance
+
+    package_script:
+        - mkdir bass-nightly
+        - mkdir bass-nightly/architectures
+        - cp -a bass/out/bass bass-nightly/bass
+        - cp -a bass/data/architectures/* bass-nightly/architectures
+
+    bass-nightly_artifacts:
+        path: "bass-nightly/**"
+
+windows-x86_64-binaries_task:
+    container:
+        image: purplekarrot/mingw-w64-x86-64:latest
+
+    compile_script:
+        - make -C bass local=false build=performance platform=windows compiler="x86_64-w64-mingw32-g++" windres="x86_64-w64-mingw32-windres"
+
+    package_script:
+        - mkdir bass-nightly
+        - mkdir bass-nightly/architectures
+        - cp -a bass/out/bass bass-nightly/bass
+        - cp -a bass/data/architectures/* bass-nightly/architectures
+
+    bass-nightly_artifacts:
+        path: "bass-nightly/**"
+
+windows-x86_32-binaries_task:
+    container:
+        image: purplekarrot/mingw-w64-i686:latest
+
+    compile_script:
+        - make -C bass local=false build=performance platform=windows compiler="i686-w64-mingw32-g++-win32" windres="i686-w64-mingw32-windres"
+
+    package_script:
+        - mkdir bass-nightly
+        - mkdir bass-nightly/architectures
+        - cp -a bass/out/bass bass-nightly/bass
+        - cp -a bass/data/architectures/* bass-nightly/architectures
+
+    bass-nightly_artifacts:
+        path: "bass-nightly/**"
+
+macOS-x86_64-binaries_task:
+    osx_instance:
+        image: mojave-base
+
+    compile_script:
+        - make -C bass local=false build=performance
+
+    package_script:
+        - mkdir bass-nightly
+        - mkdir bass-nightly/architectures
+        - cp -a bass/out/bass bass-nightly/bass
+        - cp -a bass/data/architectures/* bass-nightly/architectures
+
+    bass-nightly_artifacts:
+        path: "bass-nightly/**"
