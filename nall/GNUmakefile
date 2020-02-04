@@ -61,6 +61,11 @@ ifeq ($(compiler),)
   endif
 endif
 
+# [jsd] detect mingw32 compiler and statically link in C++ libraries:
+ifneq ($(findstring mingw32,$(compiler)),)
+  link += -static-libgcc -static-libstdc++
+endif
+
 # build settings
 ifeq ($(build),optimize)
   flags += -O3
